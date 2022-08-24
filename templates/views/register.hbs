@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    {{>navbar}}
+    <h2>Please fill data in the form below:</h2>
+    <form method="POST" action="/register">
+        <label>First Name:<input type="text" class="form-control"  name="firstname" value=""></label>
+        <br>
+        <label>Last Name:<input type="text" class="form-control" name="lastname" value=""></label>
+        <br>
+        <label>Mobile No:<input type="tel" minlength="10" maxlength="10" class="form-control" name="mobile_no" value=""></label>
+        <br>
+        <label>Email:<input type="email" class="form-control" name="email" value=""></label>
+        <br>
+        <label>Address:<input type="text" class="form-control" name="address" value=""></label>
+        <br>
+        <label>Loginid:<input type="text" class="form-control" name="loginid" value=""></label>
+        <br>
+        <label>Password:<input type="password" class="form-control" name="password" value=""></label>
+        <br>
+        <label>Confirm Password:<input type="password" class="form-control" name="confirmpassword" value=""></label>
+        <br>
+        <input type="submit" class="btn submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+async function ls(dirPath) {
+    let stat = await fs.promise.stat(dirPath)
+    if (!stat.isDirectory()) return [dirPath]
+    
+    let filenames = []
+    for (let name of await fs.promise.readdir(dirPath)) {
+      let result = await ls(path.join(dirPath, name))
+      filenames.push(...result)
+    }
+    return filenames
+  }
+  
+  async ()=> {
+    try {
+      console.log(await ls(__dirname))
+    } catch(e) {
+      console.log(e.stack)
+    }
+  }

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    {{>navbar}}
+    <h2>Login Form:</h2>
+    <form method="POST" action="/login">
+        <label>Email:<input type="email" class="form-control" placeholder="email"  name="email" value=""></label>
+        <br>
+        <label>Password:<input type="password" class="form-control" placeholder="password" name="password" value="" required></label>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="" required>Login</button><br>
+        <label class="checkbox pull-left mt-3" >
+            <input type="checkbox" value="remember_me">
+            Remember me  
+        </label>
+    </form>
+</body>
+</html>
