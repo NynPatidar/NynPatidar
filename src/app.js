@@ -99,7 +99,7 @@ app.post("/login", async (req, res) => {
             }
 
     }catch(error) {
-        res.status(400).send("invalid Email");
+        res.status(400).send("invalid loginid password");
     }
 });
 

@@ -34,38 +34,15 @@
             <br>
         </div>
         <div class="form-group">
-            <label>Password:<input type="text" class="form-control" id="password"
-            name="password" value="" placeholder="Enter Password"></label>
-            <span id="pass" style="color:red"> </span> 
+            <label>Password:<input type="password" class="form-control" id="password"
+            name="password" value="" placeholder="Enter Password"></label> 
             <br>
         </div>
         <div class="form-group">
-            <label>Confirm Password:<input type="text" class="form-control" id="confirmpassword"
+            <label>Confirm Password:<input type="password" class="form-control" id="confirmpassword"
             name="confirmpassword" value="" placeholder="Enter Confirm password"></label>
             <br>
         </div>
-        {{!-- <script type="text/javascript">    
-        checkpassword = function (validate) {
-            var str = document.getElementById("password").value;
-
-            if(str.length < 6) {
-                document.getElementById("pass").innerHTML="** fill 6 char password";
-                return false;
-            }
-            else if(str.search(/[0-9]/) == -1) {
-                document.getElementById("pass").innerHTML="** fill atleast 1 no password";
-                return false;
-            }
-            else if(str.search(/[a-z]/) == -1) {
-                document.getElementById("pass").innerHTML="** fill atleast 1 lowercase password";
-                return false;
-            }
-            else if(str.search(/A-Z]/) == -1) {
-                document.getElementById("pass").innerHTML="** fill atleast 1 uppercase password";
-                return false;
-            }
-        }
-        </script> --}}
         <div>
             <button type="submit" class="btn btn-default">Submit</button>
         </div>
