@@ -1,12 +1,12 @@
-const express = require('express');
+const express = require("express");
 const path = require("path");
 const app = express();
 const hbs = require("hbs");
-//const ejs = require("ejs");
+
 
 require("./db/conn");
 const Register = require("./models/registers");
-const Data = require("./models/data");
+const { json } = require("express");
 
 const port = process.env.PORT || 3000;
 
@@ -15,16 +15,16 @@ const template_path = path.join(__dirname, "../templates/views");
 const partials_path = path.join(__dirname, "../templates/partials");
 
 app.use(express.json());
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:false})); 
 
 app.use(express.static(static_path));
 app.set("view engine", "hbs");
-app.set("view engine", "ejs")
+
 app.set("views", template_path);
 hbs.registerPartials(partials_path);
 
 app.get("/", (req, res) => {
-    res.render("index");
+    res.render("index")
 });
 
 app.get("/register", (req, res) => {
@@ -35,9 +35,21 @@ app.get("/login", (req, res) => {
     res.render("login");
 });
 
-app.get("/data", (req, res) => {
-        res.render("data");
+app.get("/data", async (req, res) => {
+const getDocument = async () => {
+    // const findDocuments = function(db) {
+        // const collection = db.collection("register");
+        // Find some documents .toArray(function(err, data)
+       try{ 
+        const details = await Register.find();
+            res.status(201).send(details);
+        }catch(err) {
+            console.log(err);
+        }
+    }; 
+        getDocument();   
 });
+
 
 app.post("/register", async (req, res) => {
     try{
@@ -55,7 +67,8 @@ app.post("/register", async (req, res) => {
                 address: req.body.address,
                 loginid: req.body.loginid,
                 password: password,
-                confirmpassword: cpassword
+                confirmpassword: cpassword,
+                date: req.body.date
             })
 
            const registered = await registerdetails.save();
@@ -63,7 +76,8 @@ app.post("/register", async (req, res) => {
            
 
         }else {
-            res.send("Password are not matching")
+            res.send("Password not matching");
+        
         }
 
     }catch(error) {
@@ -71,15 +85,15 @@ app.post("/register", async (req, res) => {
     }
 });
 
-app.post("/login", async(req, res) => {
+app.post("/login", async (req, res) => {
     try {
-            const email = req.body.email;
+            const loginid = req.body.loginid;
             const password = req.body.password;
 
-            const useremail = await Register.findOne({email:email});
+            const useremail = await Register.findOne({loginid:loginid});
            
             if(useremail.password === password) {
-                res.status(201).render("index");
+                res.status(201).send(useremail);
             }else {
                 res.send("invalid login details");
             }
@@ -88,12 +102,6 @@ app.post("/login", async(req, res) => {
         res.status(400).send("invalid Email");
     }
 });
-
-
-// app.post("/data", async(req, res) => {
-    
-// });
-
 
 app.listen(port, () => {
     console.log('server is running on port no ${port}')

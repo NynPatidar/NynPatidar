@@ -2,30 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Details</title>
+    <title>Register Details</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 </head>
 <body>
     {{>navbar}}
     <h2>Please fill data in the form below:</h2>
     <form method="POST" action="/register">
-        <label>First Name:<input type="text" class="form-control"  name="firstname" value=""></label>
-        <br>
-        <label>Last Name:<input type="text" class="form-control" name="lastname" value=""></label>
-        <br>
-        <label>Mobile No:<input type="tel" minlength="10" maxlength="10" class="form-control" name="mobile_no" value=""></label>
-        <br>
-        <label>Email:<input type="email" class="form-control" name="email" value=""></label>
-        <br>
-        <label>Address:<input type="text" class="form-control" name="address" value=""></label>
-        <br>
-        <label>Loginid:<input type="text" class="form-control" name="loginid" value=""></label>
-        <br>
-        <label>Password:<input type="password" class="form-control" name="password" value=""></label>
-        <br>
-        <label>Confirm Password:<input type="password" class="form-control" name="confirmpassword" value=""></label>
-        <br>
-        <input type="submit" class="btn submit" value="Submit">
+        <div class="form-group">
+            <label>First Name:<input type="text" class="form-control"  name="firstname" value="" placeholder="Enter First Name"></label>
+            <br>
+        </div>
+        <div class="form-group">
+            <label>Last Name:<input type="text" class="form-control" name="lastname" value="" placeholder="Enter Last Name"></label>
+            <br>
+        </div>
+        <div class="form-group">
+            <label>Mobile No:<input type="tel" class="form-control" name="mobile_no" value="" placeholder="Enter Mobile no"></label>
+            <br>
+        </div>
+        <div class="form-group">
+            <label>Email:<input type="email" class="form-control" name="email" value="" placeholder="Enter Email"></label>
+            <br>
+        </div>
+        <div class="form-group">
+            <label>Address:<input type="text" class="form-control" name="address" value="" placeholder="Enter Address"></label>
+            <br>
+        </div>
+        <div class="form-group">
+            <label>Loginid:<input type="text" class="form-control" name="loginid" value="" placeholder="Enter Login id"></label>
+            <br>
+        </div>
+        <div class="form-group">
+            <label>Password:<input type="text" class="form-control" id="password"
+            name="password" value="" placeholder="Enter Password"></label>
+            <span id="pass" style="color:red"> </span> 
+            <br>
+        </div>
+        <div class="form-group">
+            <label>Confirm Password:<input type="text" class="form-control" id="confirmpassword"
+            name="confirmpassword" value="" placeholder="Enter Confirm password"></label>
+            <br>
+        </div>
+        {{!-- <script type="text/javascript">    
+        checkpassword = function (validate) {
+            var str = document.getElementById("password").value;
+
+            if(str.length < 6) {
+                document.getElementById("pass").innerHTML="** fill 6 char password";
+                return false;
+            }
+            else if(str.search(/[0-9]/) == -1) {
+                document.getElementById("pass").innerHTML="** fill atleast 1 no password";
+                return false;
+            }
+            else if(str.search(/[a-z]/) == -1) {
+                document.getElementById("pass").innerHTML="** fill atleast 1 lowercase password";
+                return false;
+            }
+            else if(str.search(/A-Z]/) == -1) {
+                document.getElementById("pass").innerHTML="** fill atleast 1 uppercase password";
+                return false;
+            }
+        }
+        </script> --}}
+        <div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+        
     </form>
 </body>
 </html>
