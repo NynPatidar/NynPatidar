@@ -37,9 +37,6 @@ app.get("/login", (req, res) => {
 
 app.get("/data", async (req, res) => {
 const getDocument = async () => {
-    // const findDocuments = function(db) {
-        // const collection = db.collection("register");
-        // Find some documents .toArray(function(err, data)
        try{ 
         const details = await Register.find();
             res.status(201).send(details);
