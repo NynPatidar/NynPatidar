@@ -69,7 +69,7 @@ app.post("/register", async (req, res) => {
                 password: password,
                 confirmpassword: cpassword,
                 date: req.body.date
-            })
+             })
 
            const registered = await registerdetails.save();
            res.status(201).render("index");

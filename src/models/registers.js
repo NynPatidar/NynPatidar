@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-// const passwordValidator = require("password-validator");
 
 const regSchema = new mongoose.Schema({
    firstname:{
@@ -16,8 +15,6 @@ const regSchema = new mongoose.Schema({
     type:Number,
     required:true,
     unique:true,
-    minlength:10,
-    maxlength:10
    //  validate(value) {
    //    if(!validator.isMobilePhone(value)) {
    //       throw new Error("invalid Mobile no");
