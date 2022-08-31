@@ -2,17 +2,15 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const hbs = require("hbs");
-
+const port = process.env.PORT || 3000;
 
 require("./src/db/conn");
 const Register = require("./src/models/registers");
 const { json } = require("express");
 
-const port = process.env.PORT || 8000;
-
 // const static_path = path.join(__dirname, "../");
-const view_path = path.join(__dirname, "../templates/views");
-const partials_path = path.join(__dirname, "../templates/partials");
+const view_path = path.join(__dirname, "../Nodejs/templates/views");
+const partials_path = path.join(__dirname, "../Nodejs/templates/partials");
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false})); 
