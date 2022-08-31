@@ -11,8 +11,8 @@ const { json } = require("express");
 const port = process.env.PORT || 3000;
 
 // const static_path = path.join(__dirname, "../");
-const view_path = path.join(__dirname, "../Nodejs/templates/views");
-const partials_path = path.join(__dirname, "../Nodejs/templates/partials");
+const view_path = path.join(__dirname, "../templates/views");
+const partials_path = path.join(__dirname, "../templates/partials");
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false})); 
