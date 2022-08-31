@@ -42,12 +42,6 @@ const regSchema = new mongoose.Schema({
    password:{
       type:String,
       required:true,
-      isStrongPassword: {
-            minLength: 8,
-            minLowercase: 1,
-            minUppercase: 1,
-            minNumbers: 1
-         } 
    },
    confirmpassword:{
       type:String,
