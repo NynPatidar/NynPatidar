@@ -8,7 +8,7 @@ require("./src/db/conn");
 const Register = require("./src/models/registers");
 const { json } = require("express");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 // const static_path = path.join(__dirname, "../");
 const view_path = path.join(__dirname, "../templates/views");
@@ -101,5 +101,5 @@ app.post("/login", async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('server is running on port no ${port}')
+    console.log("listning to the port no at ${port}");
 })
