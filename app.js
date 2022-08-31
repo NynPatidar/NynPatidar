@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const hbs = require("hbs");
-const port = process.env.PORT ||'3000';
+const port = process.env.PORT || 3000;
 
 require("./src/db/conn");
 const Register = require("./src/models/registers");
@@ -100,4 +100,4 @@ app.post("/login", async (req, res) => {
 
 app.listen(port, () => {
     console.log("listning to the port no at ${port}");
-})
+});
