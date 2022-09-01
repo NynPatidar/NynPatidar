@@ -99,5 +99,5 @@ app.post("/login", async (req, res) => {
 });
 
 app.listen(port, function() {
-    console.log("listning to the port no at",this.address().port, app.settings.env);
+    console.log("listning to the port no",this.address().port, app.settings.env);
 });
