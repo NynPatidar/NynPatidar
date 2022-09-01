@@ -98,6 +98,6 @@ app.post("/login", async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log("listning to the port no at ${port}");
+app.listen(port, function() {
+    console.log("listning to the port no at",this.address().port, app.settings.env);
 });
