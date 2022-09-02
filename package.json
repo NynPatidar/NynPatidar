@@ -31,5 +31,14 @@
     "mongoose": "^6.5.2",
     "socket.io": "^4.5.1",
     "validator": "^13.7.0"
-  }   
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NynPatidar/NynPatidar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NynPatidar/NynPatidar/issues"
+  },
+  "homepage": "https://github.com/NynPatidar/NynPatidar#readme"
 }
