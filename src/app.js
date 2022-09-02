@@ -4,13 +4,13 @@ const app = express();
 const hbs = require("hbs");
 const port = process.env.PORT || 3000;
 
-require("./src/db/conn");
-const Register = require("./src/models/registers");
+require("./db/conn");
+const Register = require("./models/registers");
 const { json } = require("express");
 
 // const static_path = path.join(__dirname, "../");
-const view_path = path.join(__dirname, "../Nodejs/templates/views");
-const partials_path = path.join(__dirname, "../Nodejs/templates/partials");
+const view_path = path.join(__dirname, "../templates/views");
+const partials_path = path.join(__dirname, "../templates/partials");
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false})); 
