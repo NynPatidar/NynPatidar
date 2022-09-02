@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "app.js"
   },
+  "engines": {
+    "node": "16.16.0",
+    "npm": "8.11.0"
+  },
   "keywords": [
     "example",
     "heroku"
@@ -23,15 +27,9 @@
     "express-ejs-layouts": "^2.5.1",
     "hbs": "^4.2.0",
     "html": "^1.0.0",
+    "nodemon": "^2.0.19",
     "mongoose": "^6.5.2",
     "socket.io": "^4.5.1",
     "validator": "^13.7.0"
-  },
-  "engines": {
-    "node": "16.16.0",
-    "npm": "8.11.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.19"
-  }
+  }   
 }
