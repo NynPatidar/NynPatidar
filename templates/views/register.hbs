@@ -62,7 +62,7 @@
                 var str = document.getElementById("firstname").value;
                 var alert = document.getElementById("fn_message");
 
-                if(!((/^[a-zA-Z]+$/.test(str))|| str.length==0)) {
+                if(!((/^[a-zA-Z]*$/.test(str))|| str.length==0)) {
                     alert.style.display="block";
                     alert.innerHTML="** Only Alphabates are allowed";
                     Flag=false;
@@ -76,7 +76,7 @@
                 var str = document.getElementById("lastname").value;
                 var alert = document.getElementById("ln_message");
 
-                if(!((/^[a-zA-Z]+$/.test(str))|| str.length==0)) {
+                if(!((/^[a-zA-Z]*$/.test(str))|| str.length==0)) {
                     alert.style.display="block";
                     alert.innerHTML="** Only Alphabates are allowed";
                     Flag=false;
@@ -104,7 +104,7 @@
                 var str = document.getElementById("city").value;
                 var alert = document.getElementById("c_message");
 
-                if(!((/^[a-zA-Z]+$/.test(str))|| str.length==0)) {
+                if(!((/^[a-zA-Z]*$/.test(str))|| str.length==0)) {
                     alert.style.display="block";
                     alert.innerHTML="** City name Contains only Alphabates";
                     Flag=false;
@@ -118,7 +118,7 @@
                 var str = document.getElementById("state").value;
                 var alert = document.getElementById("s_message");
 
-                if(!((/^[a-zA-Z]+$/.test(str))|| str.length==0)) {
+                if(!((/^[a-zA-Z]*$/.test(str))|| str.length==0)) {
                     alert.style.display="block";
                     alert.innerHTML="** State name Contains only Alphabates";
                     Flag=false;
@@ -132,7 +132,7 @@
                 var str = document.getElementById("country").value;
                 var alert = document.getElementById("co_message");
 
-                if(!((/^[a-zA-Z]+$/.test(str))|| str.length==0)) {
+                if(!((/^[a-zA-Z]*$/.test(str))|| str.length==0)) {
                     alert.style.display="block";
                     alert.innerHTML="** Country name Contains only Alphabates";
                     Flag=false;
@@ -211,7 +211,6 @@
                 }
             }
 </script>
-        
     </form>
 </body>
 </html>
