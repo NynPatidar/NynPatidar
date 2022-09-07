@@ -1,4 +1,5 @@
 const express = require("express");
+// const mongoose = require("mongoose");
 const path = require("path");
 const app = express();
 const hbs = require("hbs");
@@ -54,7 +55,7 @@ app.post("/register", async (req, res) => {
 
         if(password === cpassword) {
 
-            const registerdetails = new Register({
+            const registerDetails = new Register({
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
                 mobile_no: req.body.mobile_no,
@@ -66,7 +67,7 @@ app.post("/register", async (req, res) => {
                 date: req.body.date
              })
 
-           const registered = await registerdetails.save();
+           const registered = await registerDetails.save();
            res.status(201).render("index");
            
 
@@ -85,16 +86,16 @@ app.post("/login", async (req, res) => {
             const loginid = req.body.loginid;
             const password = req.body.password;
 
-            const useremail = await Register.findOne({loginid:loginid});
+            const userlog = await Register.findOne({loginid:loginid});
            
-            if(useremail.password === password) {
-                res.status(201).send(useremail);
+            if(userlog.password === password) {
+                res.status(201).send(userlog);
             }else {
                 res.send("invalid login details");
             }
 
     }catch(error) {
-        res.status(400).send("invalid loginid password");
+        res.status(400).send("invalid loginid or password");
     }
 });
 

@@ -15,11 +15,6 @@ const regSchema = new mongoose.Schema({
     type:Number,
     required:true,
     unique:true,
-   //  validate(value) {
-   //    if(!validator.isMobilePhone(value)) {
-   //       throw new Error("invalid Mobile no");
-   //    }
-   // }
    },
    email:{
       type:String,
@@ -53,5 +48,5 @@ const regSchema = new mongoose.Schema({
    }
 })
 
-const Register = new mongoose.model("Register", regSchema);
-module.exports = Register;
+const Detail = new mongoose.model("Register", regSchema);
+module.exports = Detail;
