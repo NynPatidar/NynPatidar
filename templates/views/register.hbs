@@ -60,28 +60,28 @@
         <script>
             function checkfn() {
                 var str = document.getElementById("firstname").value;
-                var fAlert = document.getElementById("fn_message");
+                var alert = document.getElementById("fn_message");
 
                 if(!((/^[a-zA-Z]+$/.test(str))|| str.length==0)) {
-                    falert.style.display="block";
-                    falert.innerHTML="** Only Alphabates are allowed";
+                    alert.style.display="block";
+                    alert.innerHTML="** Only Alphabates are allowed";
                     Flag=false;
                 }else {
-                    falert.style.display="none";
+                    alert.style.display="none";
                     Flag=true;
                 }
             }
 
             function checkln() {
                 var str = document.getElementById("lastname").value;
-                var lalert = document.getElementById("ln_message");
+                var alert = document.getElementById("ln_message");
 
                 if(!((/^[a-zA-Z]+$/.test(str))|| str.length==0)) {
-                    lalert.style.display="block";
-                    lalert.innerHTML="** Only Alphabates are allowed";
+                    alert.style.display="block";
+                    alert.innerHTML="** Only Alphabates are allowed";
                     Flag=false;
                 }else {
-                    lalert.style.display="none";
+                    alert.style.display="none";
                     Flag=true;
                 }
             }
