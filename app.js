@@ -51,6 +51,10 @@ app.post("/register", async (req, res) => {
 
         const password = req.body.password;
         const cpassword = req.body.confirmpassword;
+        const address = {
+            city: req.body.city,
+            state: req.body.state,
+            country: req.body.country}
 
         if(password === cpassword) {
 
@@ -59,7 +63,7 @@ app.post("/register", async (req, res) => {
                 lastname: req.body.lastname,
                 mobile_no: req.body.mobile_no,
                 email: req.body.email,
-                address: req.body.address,
+                address: address,
                 loginid: req.body.loginid,
                 password: password,
                 confirmpassword: cpassword,
