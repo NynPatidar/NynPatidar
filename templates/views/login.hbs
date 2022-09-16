@@ -6,8 +6,9 @@
     
 </head>
 <body>
-    {{>navbar}}
-    <form method="POST" action="/login">
+    <h2>Login Form</h2>
+    {{>navbar}}<br>
+    <form id="form2" method="POST" action="/login">
     <div class="form-group">
             <label>Loginid:<input type="text" class="form-control" name="loginid" value=""
             placeholder="Enter Login id" required></label>
@@ -19,7 +20,7 @@
             <br>
         </div>
         <div>
-            <button type="submit" id="submit" class="btn btn-default">Submit</button>
+            <button type="submit" id="submit" class="btn btn-default">Login</button>
         </div>
     </form>
 </body>

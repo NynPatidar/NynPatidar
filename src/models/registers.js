@@ -58,5 +58,5 @@ const regSchema = new mongoose.Schema({
    }
 })
 
-const Detail = new mongoose.model("Register", regSchema);
-module.exports = Detail;
+const Register = new mongoose.model("Register", regSchema);
+module.exports = Register;

@@ -1,14 +1,37 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const path = require("path");
 const app = express();
 const hbs = require("hbs");
+
+const http = require("http");
+const server = http.createServer(app);
+const io = require("socket.io")(server);
+
+
 const port = process.env.PORT || 3000;
+
+io.on("connection", (socket) => {
+    console.log("User connected...!");
+
+    socket.on("joinRoom", (room) => {
+        console.log("user joind room");
+        socket.join(room);
+    });
+    socket.on("disconnect", () => {
+        console.log("User disconnected...!");
+    });
+    // Register.watch().on('change',(change)=>{
+    //     console.log('Something has changed')
+    //     io.to(change.fullDocument._id).emit('changes',change.fullDocument)
+    // })
+});
 
 require("./src/db/conn");
 const Register = require("./src/models/registers");
 const { json } = require("express");
 
-// const static_path = path.join(__dirname, "../");
+// app.use(express.static(path.join(__dirname, "../")));
 const view_path = path.join(__dirname, "/templates/views");
 const partials_path = path.join(__dirname, "/templates/partials");
 
@@ -22,10 +45,6 @@ app.set("views", view_path);
 hbs.registerPartials(partials_path);
 
 app.get("/", (req, res) => {
-    res.render("index");
-});
-
-app.get("/register", (req, res) => {
     res.render("register");
 });
 
@@ -54,7 +73,8 @@ app.post("/register", async (req, res) => {
         const address = {
             city: req.body.city,
             state: req.body.state,
-            country: req.body.country}
+            country: req.body.country
+        };
 
         if(password === cpassword) {
 
@@ -68,20 +88,20 @@ app.post("/register", async (req, res) => {
                 password: password,
                 confirmpassword: cpassword,
                 date: req.body.date
-             })
+             });
 
            const registered = await registerDetails.save();
-           res.status(201).render("index");
+           res.status(201).render("register");
            
 
         }else {
             res.send("Password not matching");
         
-        }
+        };
 
     }catch(error) {
         res.status(400).send(error);
-    }
+    };
 });
 
 app.post("/login", async (req, res) => {
@@ -102,6 +122,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
-app.listen(port, function() {
+server.listen(port, function() {
     console.log("listning to the port no",this.address().port, app.settings.env);
 });
+

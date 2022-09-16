@@ -7,7 +7,12 @@ mongoose.connect(db, {
     useUnifiedTopology:true
 }).then(() => {
     console.log("Mongodb connection successful!");
+    
 }).catch((err) => {
     console.log("Mongodb connection failed!");
     console.log(err);
 });
+
+
+
+
