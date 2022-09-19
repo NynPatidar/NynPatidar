@@ -42,7 +42,8 @@ const regSchema = new mongoose.Schema({
    },
    loginid:{
       type:String,
-      required:true
+      required:true,
+      unique:true,
    },
    password:{
       type:String,

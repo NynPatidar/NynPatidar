@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <style>
+        body {
+            border: 1px solid black;
+        }
+    </style>  
+</head>
+<body>
+    <h3 style="color:rgb(0, 140, 255)">live_users</h3>
+    <label><b>Loginid: </b>{{loginid}}</label><br>
+    <label><b>Socketid: </b><span onclick="myfun()"><span style="color:blue" id="socketid"></span></span></label> 
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/main.js"></script>
+</body>
+</html>

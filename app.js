@@ -3,29 +3,14 @@ const mongoose = require("mongoose");
 const path = require("path");
 const app = express();
 const hbs = require("hbs");
-
+let nayan=[]
 const http = require("http");
 const server = http.createServer(app);
-const io = require("socket.io")(server);
-
+const {Server}=require("socket.io");
+const io = new Server(server);
 
 const port = process.env.PORT || 3000;
 
-io.on("connection", (socket) => {
-    console.log("User connected...!");
-
-    socket.on("joinRoom", (room) => {
-        console.log("user joind room");
-        socket.join(room);
-    });
-    socket.on("disconnect", () => {
-        console.log("User disconnected...!");
-    });
-    // Register.watch().on('change',(change)=>{
-    //     console.log('Something has changed')
-    //     io.to(change.fullDocument._id).emit('changes',change.fullDocument)
-    // })
-});
 
 require("./src/db/conn");
 const Register = require("./src/models/registers");
@@ -36,7 +21,11 @@ const view_path = path.join(__dirname, "/templates/views");
 const partials_path = path.join(__dirname, "/templates/partials");
 
 app.use(express.json());
-app.use(express.urlencoded({extended:false})); 
+app.use(express.urlencoded({extended:false}));
+
+
+const static_path = path.join(__dirname,"/public");
+app.use(express.static(static_path));
 
 // app.use(express.static(static_path));
 app.set("view engine", "hbs");
@@ -46,6 +35,10 @@ hbs.registerPartials(partials_path);
 
 app.get("/", (req, res) => {
     res.render("register");
+});
+
+app.get("/connection", (req, res) => {
+    res.render("connection");
 });
 
 app.get("/login", (req, res) => {
@@ -105,24 +98,45 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
+    const loginid = req.body.loginid;
     try {
-            const loginid = req.body.loginid;
+        loginid;
             const password = req.body.password;
 
             const userlog = await Register.findOne({loginid:loginid});
            
             if(userlog.password === password) {
-                res.status(201).send(userlog);
-            }else {
-                res.send("invalid login details");
-            }
-
-    }catch(error) {
+                let mydata={
+                firstname:userlog.firstname,
+                lastname:userlog.lastname,
+                mobile_no:userlog.mobile_no,
+                email: userlog.email,
+                address: userlog.address,
+                loginid: userlog.loginid,
+                    }
+                    nayan.push(mydata);
+                    res.status(201).render("connection",{loginid:loginid});
+                }                
+                                
+            }catch(error) {
         res.status(400).send("invalid loginid or password");
     }
 });
+
+io.sockets.on("connection", (socket) => {
+    socketID = socket.id;
+   console.log("User connected.." + socketID);
+    io.emit("so", socketID);
+
+    io.emit("nayan",{nayan, socketID});     
+
+   socket.on("disconnect",(socket)=>{
+       console.log("User disconnected");
+   });
+}); 
 
 server.listen(port, function() {
     console.log("listning to the port no",this.address().port, app.settings.env);
 });
 
+       
