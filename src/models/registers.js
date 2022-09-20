@@ -26,20 +26,19 @@ const regSchema = new mongoose.Schema({
          }
       }
    },
-   address:{
-      city:{
-         type:String,
-         required:true
-      },
-      state:{
-         type:String,
-         required:true
-      },
-      country:{
-         type:String,
-         required:true
-      },
+   city:{
+      type:String,
+      required:true
    },
+   state:{
+      type:String,
+      required:true
+   },
+   country:{
+      type:String,
+      required:true
+   },
+   
    loginid:{
       type:String,
       required:true,

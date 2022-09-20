@@ -45,17 +45,17 @@ app.get("/login", (req, res) => {
     res.render("login");
 });
 
-app.get("/data", async (req, res) => {
-const getDocument = async () => {
-       try{ 
-        const details = await Register.find();
-            res.status(201).send(details);
-        }catch(err) {
-            console.log(err);
-        }
-    }; 
-        getDocument();   
-});
+// app.get("/data", async (req, res) => {
+// const getDocument = async () => {
+//        try{ 
+//         const details = await Register.find();
+//             res.status(201).send(details);
+//         }catch(err) {
+//             console.log(err);
+//         }
+//     }; 
+//         getDocument();   
+// });
 
 
 app.post("/register", async (req, res) => {
@@ -63,11 +63,6 @@ app.post("/register", async (req, res) => {
 
         const password = req.body.password;
         const cpassword = req.body.confirmpassword;
-        const address = {
-            city: req.body.city,
-            state: req.body.state,
-            country: req.body.country
-        };
 
         if(password === cpassword) {
 
@@ -76,7 +71,9 @@ app.post("/register", async (req, res) => {
                 lastname: req.body.lastname,
                 mobile_no: req.body.mobile_no,
                 email: req.body.email,
-                address: address,
+                city: req.body.city,
+                state: req.body.state,
+                country: req.body.country,
                 loginid: req.body.loginid,
                 password: password,
                 confirmpassword: cpassword,
@@ -111,8 +108,10 @@ app.post("/login", async (req, res) => {
                 lastname:userlog.lastname,
                 mobile_no:userlog.mobile_no,
                 email: userlog.email,
-                address: userlog.address,
-                loginid: userlog.loginid,
+                city: userlog.city,
+                state: userlog.state,
+                country: userlog.country,
+                loginid: userlog.loginid
                     }
                     nayan.push(mydata);
                     res.status(201).render("connection",{loginid:loginid});

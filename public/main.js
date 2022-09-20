@@ -9,9 +9,12 @@ socket.on("nayan",({nayan, socketID}) => {
 
     window.firstname = newData.firstname;
     window.lastname = newData.lastname;
-    window.mobile_no = newData.mobile_on;
+    window.mobile_no = newData.mobile_no;
     window.email = newData.email;
     window.address = newData.address;
+    // window.city = newData.city;
+    // window.state = newData.state;
+    // window.country = newData.country;
     window.loginid = newData.loginid;
 });
 
