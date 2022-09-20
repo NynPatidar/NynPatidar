@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const app = express();
 const hbs = require("hbs");
-let nayan=[]
+let nayan=[];
 const http = require("http");
 const server = http.createServer(app);
 const {Server}=require("socket.io");
@@ -16,7 +16,6 @@ require("./src/db/conn");
 const Register = require("./src/models/registers");
 const { json } = require("express");
 
-// app.use(express.static(path.join(__dirname, "../")));
 const view_path = path.join(__dirname, "/templates/views");
 const partials_path = path.join(__dirname, "/templates/partials");
 
@@ -27,7 +26,6 @@ app.use(express.urlencoded({extended:false}));
 const static_path = path.join(__dirname,"/public");
 app.use(express.static(static_path));
 
-// app.use(express.static(static_path));
 app.set("view engine", "hbs");
 
 app.set("views", view_path);
@@ -98,27 +96,28 @@ app.post("/login", async (req, res) => {
     const loginid = req.body.loginid;
     try {
         loginid;
-            const password = req.body.password;
+        const password = req.body.password;
 
             const userlog = await Register.findOne({loginid:loginid});
-           
+            const myemail = userlog.email;
             if(userlog.password === password) {
                 let mydata={
-                firstname:userlog.firstname,
-                lastname:userlog.lastname,
-                mobile_no:userlog.mobile_no,
+                firstname: userlog.firstname,
+                lastname: userlog.lastname,
+                mobile_no: userlog.mobile_no,
                 email: userlog.email,
                 city: userlog.city,
                 state: userlog.state,
                 country: userlog.country,
                 loginid: userlog.loginid
-                    }
-                    nayan.push(mydata);
-                    res.status(201).render("connection",{loginid:loginid});
-                }                
+                }
+                nayan.push(mydata);
+                res.status(201).render("connection",{loginid:loginid,myemail:myemail});
+
+            }               
                                 
             }catch(error) {
-        res.status(400).send("invalid loginid or password");
+        res.status(400).send("Invalid loginid or password");
     }
 });
 
@@ -127,7 +126,8 @@ io.sockets.on("connection", (socket) => {
    console.log("User connected.." + socketID);
     io.emit("so", socketID);
 
-    io.emit("nayan",{nayan, socketID});     
+    io.emit("nayan",{nayan, socketID});
+    nayan = [];   
 
    socket.on("disconnect",(socket)=>{
        console.log("User disconnected");

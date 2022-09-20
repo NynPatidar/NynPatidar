@@ -25,24 +25,29 @@
             <span id="mo_message" style="color:red"></span>
         </div>
         <div class="form-group">
-            <label>Email:<input type="email" class="form-control" name="email" value="" placeholder="Enter Email" required></label>
+            <label>Email:<input type="email" class="form-control" id="email" name="email" value="" placeholder="Enter Email" required></label>
         </div>
         <div class="form-group">
             <label>Address:</label><br>
-            <sub>City:<input type="text" class="form-control" id="city" name="city" value=""
-            placeholder="Enter Your City" onkeyup="checkCity();" required></sub>
-            <span id="c_message" style="color:red"></span>
-            
-            <sub>State:<input type="text" class="form-control" id="state" name="state" value=""
-            placeholder="Enter Your State" onkeyup="checkState();" required></sub>
-            <span id="s_message" style="color:red"></span>
-            
-            <sub>Country:<input type="text" class="form-control" id="country" name="country" value=""
-            placeholder="Enter Your Country" onkeyup="checkCountry();" required></sub>
-            <span id="co_message" style="color:red"></span>
+        </div>    
+            <div>
+                <sub>City:<input type="text" class="form-control" id="city" name="city" value=""
+                placeholder="Enter Your City" onkeyup="checkCity();" required></sub>
+                <span id="c_message" style="color:red"></span>
+            </div>
+            <div>
+                <sub>State:<input type="text" class="form-control" id="state" name="state" value=""
+                placeholder="Enter Your State" onkeyup="checkState();" required></sub>
+                <span id="s_message" style="color:red"></span>
+            </div>
+            <div>
+                <sub>Country:<input type="text" class="form-control" id="country" name="country" value=""
+                placeholder="Enter Your Country" onkeyup="checkCountry();" required></sub>
+                <span id="co_message" style="color:red"></span>
+            </div>
         </div>
         <div class="form-group">
-            <label>Loginid:<input type="text" class="form-control" name="loginid" value="" placeholder="Enter Login id" required></label>
+            <label>Loginid:<input type="text" class="form-control" id="loginid" name="loginid" value="" placeholder="Enter Login id" required></label>
         </div>
         <div class="form-group">
             <label for="password">Password:<input type="password" class="form-control" id="password"
@@ -55,8 +60,8 @@
             <label>Confirm Password:<input type="password" class="form-control" id="confirmpassword"
             name="confirmpassword" value="" placeholder="Enter Confirm password" required></label>
         </div>
-        <div>
-            <button type="submit" id="submit" class="btn btn-default">Register</button>
+        <div class="container">
+            <button type="submit" onclick="myfunction()" id="submit" class="btn btn-default">Register</button>
         </div>
     </form>
         <script>
@@ -212,6 +217,10 @@
                     length.classList.add("invalid");
                 }
             }
+
+        function myfunction(){
+            alert("Data saved successfully..!");
+        }
         </script>
 </body>
 </html>
